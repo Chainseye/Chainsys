@@ -1,0 +1,105 @@
+/* colorful */
+.colorful-container {
+    width: 100%;
+    height: 100%;
+}
+.colorful-container > div {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 1;
+}
+.colorful-container > div.boxShadow {
+    animation: colorfulCircle cubic-bezier(0, 0, 1, 1) 3s;
+    animation-iteration-count: infinite;
+    -webkit-animation: colorfulCircle cubic-bezier(0, 0, 1, 1) 3s;
+    -webkit-animation-iteration-count: infinite;
+}
+.colorful-container > div.boxShadow:nth-child(1) {
+    box-shadow: 0 0 150px rgba(255, 0, 7, 0.73);
+    animation-delay: 0s;
+}
+.colorful-container > div.boxShadow:nth-child(2) {
+    box-shadow: 0 0 150px rgba(106, 255, 65, 0.73);
+    animation-delay: 0.3s;
+}
+.colorful-container > div.boxShadow:nth-child(3) {
+    box-shadow: 0 0 100px rgba(37, 36, 255, 0.73);
+    animation-delay: 1.1s;
+}
+.colorful-container.danger > div.boxShadow:nth-child(1) {
+    opacity: 1;
+}
+.colorful-container.danger > div.boxShadow:nth-child(2), .colorful-container.danger > div.boxShadow:nth-child(3) {
+    opacity: 0;
+}
+.colorful-container.success > div.boxShadow:nth-child(2) {
+    opacity: 1;
+}
+.colorful-container.success > div.boxShadow:nth-child(1), .colorful-container.danger > div.boxShadow:nth-child(3) {
+    opacity: 0;
+}
+.colorful-container.check > div.boxShadow:nth-child(3) {
+    opacity: 1;
+}
+.colorful-container.check > div.boxShadow:nth-child(1), .colorful-container.danger > div.boxShadow:nth-child(2) {
+    opacity: 0;
+}
+.colorful-container > div.highLight {
+    box-shadow: rgba(123, 112, 112, 0.38) 19px 20px 94px 5px inset;
+    animation: rotate_360 cubic-bezier(0, 0, 1, 1) 2s;
+    animation-iteration-count: infinite;
+    -webkit-animation: rotate_360 cubic-bezier(0, 0, 1, 1) 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+.colorful-container > div.content {
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+}
+.colorful-container > div.content > input.user, .colorful-container > div.content > input.password {
+    position: absolute;
+    width: 180px;
+    left: 50%;
+    margin-left: -90px;
+    background-color: #000;
+    border: none;
+}
+.colorful-container > div.content > input.user {
+    bottom: 40px;
+}
+.colorful-container > div.content > input.password {
+    bottom: 10px;
+}
+@keyframes colorfulCircle
+{
+    0% {
+        transform: rotate(0deg) scale(1, 1);
+    }
+    25% {
+        transform: rotate(90deg) scale(1.05, 0.95);
+    }
+    50% {
+        transform: rotate(180deg) scale(1, 1.05);
+    }
+    75% {
+        transform: rotate(270deg) scale(0.95, 1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1, 1);
+    }
+}
+@keyframes rotate_360
+{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

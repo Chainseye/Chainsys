@@ -1,0 +1,10 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    outline: none;
+    position: relative;
+}
+html, body {
+    height: 100%;
+}
