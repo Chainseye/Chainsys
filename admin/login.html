@@ -18,8 +18,8 @@
                     <div class="boxShadow"></div>
                     <div class="highLight"></div>
                     <div class="content">
-                        <input type="text" class="user"/>
-                        <input type="password" class="password"/>
+                        <input type="text" class="user" placeholder="enterName"/>
+                        <input type="password" class="password" placeholder="password"/>
                     </div>
                 </div>
             </div>
@@ -27,6 +27,24 @@
         <!-- script -->
         <script type="text/javascript" src="/src/js/jquery-1.9.1.min.js"></script>
         <script>
+            $(document).ready(function() {
+                $("input.user, input.password").on("keydown", function(e) {
+                    if(e.keyCode == 13 && $("input.user").val() != null && $("input.password").val() != null) {
+                        if($("input.password").val() == "123123" && $("input.user").val() == "123") {
+                            $(".colorful-container").removeClass().addClass("colorful-container success");
+                        } else {
+                            $(".colorful-container").removeClass().addClass("colorful-container danger");
+                        }
+                    } else {
+                        $(".colorful-container").removeClass().addClass("colorful-container check");
+                    }
+                });
+                $("input.user, input.password").on("blur", function() {
+                    if($("input.user").val() == "" && $("input.password").val() == "") {
+                        $(".colorful-container").removeClass().addClass("colorful-container");
+                    }
+                })
+            });
 
         </script>
     </body>
