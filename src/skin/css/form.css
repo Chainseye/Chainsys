@@ -110,3 +110,19 @@
         transform: rotate(360deg);
     }
 }
+
+/* chainsBar */
+.chainsBar {
+    position: relative;
+}
+.chainsBar-content {
+    position: relative;
+}
+.chainsBar-content > .chainsBar-newsItem {
+    float: left;
+}
+.chainsBar-content > .chainsBar-newsItem:last-child::after {
+    content: '';
+    display: block;
+    clear: both;
+}
