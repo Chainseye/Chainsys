@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	fmt.Printf("start")
+	fmt.Println("start")
 	http.HandleFunc("/", controller.Index)
 	err := http.ListenAndServe(":8090", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-	fmt.Printf("end")
+	fmt.Println("end")
 }
