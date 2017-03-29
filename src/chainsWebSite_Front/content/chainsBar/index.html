@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <title>ChainsBar</title>
+
+        <link rel="stylesheet" href="../../src/skin/css/global.css">
+        <link rel="stylesheet" href="../../src/skin/css/form.css">
+    </head>
+    <body>
+        <div class="main">
+            <div class="main-title">
+                <p>Here is ChainsBar !</p>
+            </div>
+            <div class="main-content">
+                <div class="content-container">
+                    <div id="chainsBar" class="chainsBar"></div>
+                </div>
+            </div>
+            <div class="main-footer">
+                <p>Here is ChainsBar footer !</p>
+            </div>
+        </div>
+
+        <!-- script  -->
+        <script type="text/javascript" src="../../src/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="chainsBar.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#chainsBar").chainsBar();
+            });
+        </script>
+    </body>
+</html>
