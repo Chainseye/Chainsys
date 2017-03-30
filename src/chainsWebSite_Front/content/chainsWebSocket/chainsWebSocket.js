@@ -15,7 +15,7 @@
                 console.log("WebSocket: " + e.code + " Connection closed")
             },
             "messageFunc": function(e) {
-                console.log("Get Info:" + e.code)
+                console.log("Get Info: " + e.code)
             }
         };
         this.options = $.extend({}, this.options, opt)
