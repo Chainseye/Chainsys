@@ -16,7 +16,10 @@
             },
             "messageFunc": function(e) {
                 console.log("Get Info: " + e.code)
-            }
+            },
+            "inputContainer": "#wsInput",
+            "buttonContainer": "#wsButton",
+            "trigger": "click",
         };
         this.options = $.extend({}, this.options, opt)
     };
@@ -27,6 +30,9 @@
             var that = this;
             var wsLink = that.optinos.wsType + "://" + that.options.wsUrl + ":" + that.options.wsPort;
             var wsItem = new WebSocket(wsLink);
+            $(that.options.buttonContainer).on(that.options.trigger, function() {
+                wsItem.send($(that.options.inputContainer).value);
+            });
         }
     };
 
