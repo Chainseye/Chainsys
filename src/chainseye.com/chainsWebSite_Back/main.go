@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
+
+	"chainseye.com/chainsWebSite_Back/router"
 
 	"golang.org/x/net/websocket"
 )
@@ -32,9 +32,10 @@ func Echo(ws *websocket.Conn) {
 }
 
 func main() {
-	http.Handle("/", websocket.Handler(Echo))
+	// http.Handle("/", websocket.Handler(Echo))
 
-	if err := http.ListenAndServe(":9999", nil); err != nil {
-		log.Fatal("ListenAndServe:", err)
-	}
+	// if err := http.ListenAndServe(":9999", nil); err != nil {
+	// 	log.Fatal("ListenAndServe:", err)
+	// }
+	router.SetRouter()
 }
