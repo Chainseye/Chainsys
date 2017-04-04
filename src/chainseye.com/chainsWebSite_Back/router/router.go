@@ -1,7 +1,8 @@
 package router
 
 import (
-	"chainseye.com/chainsWebSite_Back/controller"
+	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,15 +10,27 @@ import (
 //SetRouter gin框架设置路由
 func SetRouter() {
 
-	gin.SetMode(gin.DebugMode)
+	gin.SetMode(gin.ReleaseMode)
 
-	ginRouter := gin.Default()
+	//ginRouter := gin.Default()
+	ginRouter := gin.New()
 
-	makeAPI(ginRouter)
+	ginRouter.Use(MiddleWare)
+
+	ginRouter.GET("/", func(context *gin.Context) {
+
+		fmt.Println("\n router success !")
+
+		context.JSON(http.StatusOK, gin.H{
+			"title": "Gin Web Success !",
+		})
+
+	})
 
 	ginRouter.Run(":8099")
 }
 
-func makeAPI(ginRouter *gin.Engine) {
-	ginRouter.Get("/", controller.Index)
+//MiddleWare 中间件
+func MiddleWare(c *gin.Context) {
+	fmt.Println("\n MiddleWare start !")
 }
