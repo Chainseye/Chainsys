@@ -1,6 +1,8 @@
 package router
 
 import (
+	"chainseye.com/chainsWebSite_Back/controller"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,8 +15,9 @@ func SetRouter() {
 
 	makeAPI(ginRouter)
 
+	ginRouter.Run(":8099")
 }
 
 func makeAPI(ginRouter *gin.Engine) {
-
+	ginRouter.Get("/", controller.Index)
 }
