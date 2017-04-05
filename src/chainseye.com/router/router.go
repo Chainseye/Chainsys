@@ -2,6 +2,7 @@ package router
 
 import (
 	"fmt"
+
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -17,13 +18,18 @@ func SetRouter() {
 
 	ginRouter.Use(MiddleWare)
 
+	ginRouter.Static("./src/chainseye.com/view/static", "ginStatic")
+	ginRouter.LoadHTMLGlob("./src/chainseye.com/view/templates/*")
+
 	ginRouter.GET("/", func(context *gin.Context) {
 
-		fmt.Println("\n router success !")
+		context.HTML(http.StatusOK, "cWF_index.tmpl", nil)
 
-		context.JSON(http.StatusOK, gin.H{
-			"title": "Gin Web Success !",
-		})
+	})
+
+	ginRouter.GET("/chains_back/", func(context *gin.Context) {
+
+		context.HTML(http.StatusOK, "cWB_portal.tmpl", nil)
 
 	})
 

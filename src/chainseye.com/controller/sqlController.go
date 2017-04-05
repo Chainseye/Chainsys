@@ -14,11 +14,7 @@ const (
 	DB_ConnectDB = "GoLang_DB"
 )
 
-func Mysql_Router(context *gin.Context) {
-	Mysql_Driver_test()
-}
-
-func Mysql_Driver_test() {
+func Mysql_Driver() {
 	db, err := sql.Open("mysql", DB_Admin+":"+DB_Password+"@/"+DB_ConnectDB+"?charset=utf8")
 	CheckErr(err)
 	rows, err := db.Query("select * from person")
@@ -34,10 +30,4 @@ func Mysql_Driver_test() {
 		fmt.Println(Password)
 	}
 	db.Close()
-}
-
-func CheckErr(err error) {
-	if err != nil {
-		panic(err)
-	}
 }
