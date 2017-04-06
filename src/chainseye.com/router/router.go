@@ -21,6 +21,7 @@ func SetRouter() {
 	ginRouter.Use(MiddleWare)
 
 	ginRouter.Static("/static", "./src/chainseye.com/view/static")
+	ginRouter.StaticFile("/favicon.ico", "./favicon.ico")
 	ginRouter.LoadHTMLGlob("src/chainseye.com/view/templates/*")
 
 	displayPage(ginRouter)

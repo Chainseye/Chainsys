@@ -1,12 +1,8 @@
 package controller
 
-// import (
-// 	"fmt"
-// 	"log"
-// 	"net/http"
-
-// 	"golang.org/x/net/websocket"
-// )
+//StartWebSocket 开始连接WebSocket
+func StartWebSocket(ws *websocket) {
+}
 
 // func Echo(ws *websocket.Conn) {
 // 	var err error
