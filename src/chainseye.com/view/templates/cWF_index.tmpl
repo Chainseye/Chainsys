@@ -1,52 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1">
-        <title>Login | Chainsys</title>
-
-        <link rel="stylesheet" href="global.css" />
-        <link rel="stylesheet" href="home.css" />
-        <link rel="stylesheet" href="form.css" />
+        <title>Index</title>
     </head>
     <body>
-        <div id="login-container" class="login-container">
-            <div class="form-container">
-                <div class="colorful-container">
-                    <div class="boxShadow"></div>
-                    <div class="boxShadow"></div>
-                    <div class="boxShadow"></div>
-                    <div class="highLight"></div>
-                    <div class="content">
-                        <input type="text" class="user" placeholder="enterName"/>
-                        <input type="password" class="password" placeholder="password"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- script -->
-        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <h1>This is index page !</h1>
+        <p>Info: <span id="text-target"></span></p>
+        <script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
         <script>
             $(document).ready(function() {
-                $("input.user, input.password").on("keydown", function(e) {
-                    if(e.keyCode == 13 && $("input.user").val() != null && $("input.password").val() != null) {
-                        if($("input.password").val() == "123123" && $("input.user").val() == "123") {
-                            $(".colorful-container").removeClass().addClass("colorful-container success");
-                        } else {
-                            $(".colorful-container").removeClass().addClass("colorful-container danger");
-                        }
-                    } else {
-                        $(".colorful-container").removeClass().addClass("colorful-container check");
-                    }
+                $.getJSON("/api/info", function(data) {
+                    $("#text-target").html(data.info);
                 });
-                $("input.user, input.password").on("blur", function() {
-                    if($("input.user").val() == "" && $("input.password").val() == "") {
-                        $(".colorful-container").removeClass().addClass("colorful-container");
-                    }
-                })
             });
-
         </script>
     </body>
 </html>
