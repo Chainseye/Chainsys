@@ -1,36 +1,35 @@
 package controller
 
-//StartWebSocket 开始连接WebSocket
-func StartWebSocket(ws *websocket) {
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
+)
+
+//
+var wsUpgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
 }
 
-// func Echo(ws *websocket.Conn) {
-// 	var err error
+//WebSocketMiddleWare 中间件
+func WebSocketMiddleWare(context *gin.Context) {
+	fmt.Println("WsMiddleWare")
+}
 
-// 	for {
-// 		var reply string
-
-// 		if err = websocket.Message.Receive(ws, &reply); err != nil {
-// 			fmt.Println("Can't receive")
-// 			break
-// 		}
-
-// 		fmt.Println("Received back from client: " + reply)
-
-// 		msg := "Received:  " + reply
-// 		fmt.Println("Sending to client: " + msg)
-
-// 		if err = websocket.Message.Send(ws, msg); err != nil {
-// 			fmt.Println("Can't send")
-// 			break
-// 		}
-// 	}
-// }
-
-// func main() {
-// 	http.Handle("/", websocket.Handler(Echo))
-
-// 	if err := http.ListenAndServe(":9999", nil); err != nil {
-// 		log.Fatal("ListenAndServe:", err)
-// 	}
-// }
+//WebSocketConnect 链接WebSocket
+func WebSocketConnect(context *gin.Context) {
+	conn, err := wsUpgrader.Upgrade(context.Writer, context.Request, nil)
+	if err != nil {
+		fmt.Printf("Failed to set websocket upgrade : %+v", err)
+		return
+	}
+	for {
+		t, msg, err := conn.ReadMessage()
+		if err != nil {
+			break
+		}
+		conn.WriteMessage(t, msg)
+	}
+}
