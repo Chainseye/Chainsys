@@ -12,23 +12,26 @@ import (
 
 //SetRouter gin框架设置路由
 func SetRouter() {
-
-	//gin.SetMode(gin.ReleaseMode)
-
 	ginRouter := gin.Default()
-	//ginRouter := gin.New()
 
 	ginRouter.Use(MiddleWare)
 
-	ginRouter.Static("/static", "./src/chainseye.com/view/static")
+	ginRouter.Static("/static", "./src/chainseye.com/static/*")
 	ginRouter.StaticFile("/favicon.ico", "./favicon.ico")
-	ginRouter.LoadHTMLGlob("src/chainseye.com/view/templates/*")
+	ginRouter.LoadHTMLGlob("src/chainseye.com/static/html/*")
 
 	displayPage(ginRouter)
 	makeAPI(ginRouter)
+	ginRouter.Run(":8099")
+}
+
+//SetWebSocketService 设置websocket
+func SetWebSocketService() {
+	ginRouter := gin.Default()
+
 	startWebSocket(ginRouter)
 
-	ginRouter.Run(":8099")
+	ginRouter.Run(":9099")
 }
 
 // Page
@@ -55,10 +58,7 @@ func makeAPI(ginRouter *gin.Engine) {
 
 // WebSocket
 func startWebSocket(ginRouter *gin.Engine) {
-	ginWebSocket := ginRouter.Group("/ws", controller.WebSocketMiddleWare)
-	{
-		ginWebSocket.GET("/ws", controller.WebSocketConnect)
-	}
+	ginRouter.GET("/ws", controller.WebSocketConnect)
 }
 
 //MiddleWare 中间件
