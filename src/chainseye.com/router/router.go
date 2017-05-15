@@ -1,47 +1,38 @@
 package router
 
 import (
-	"fmt"
-
-	"chainseye.com/controller"
-
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+
+	"chainseye.com/controller"
 )
 
 //SetRouter gin框架设置路由
 func SetRouter() {
 	ginRouter := gin.Default()
 
-	ginRouter.Use(MiddleWare)
-
-	ginRouter.Static("/static", "./src/chainseye.com/static/*")
+	ginRouter.Static("/static", "./src/chainseye.com/static/")
 	ginRouter.StaticFile("/favicon.ico", "./favicon.ico")
 	ginRouter.LoadHTMLGlob("src/chainseye.com/static/html/*")
 
 	displayPage(ginRouter)
 	makeAPI(ginRouter)
-	ginRouter.Run(":8099")
-}
-
-//SetWebSocketService 设置websocket
-func SetWebSocketService() {
-	ginRouter := gin.Default()
-
 	startWebSocket(ginRouter)
 
-	ginRouter.Run(":9099")
+	ginRouter.Run(":8099")
 }
 
 // Page
 func displayPage(ginRouter *gin.Engine) {
 	ginRouter.GET("/", func(context *gin.Context) {
-		context.HTML(http.StatusOK, "cWF_index.tmpl", nil)
+		context.HTML(http.StatusOK, "cWF_index.html", gin.H{
+			"info": "The index page !",
+		})
 	})
 
 	ginRouter.GET("/chains_back/", func(context *gin.Context) {
-		context.HTML(http.StatusOK, "cWB_portal.tmpl", gin.H{
+		context.HTML(http.StatusOK, "cWB_portal.html", gin.H{
 			"info": " Get Router ! ",
 		})
 	})
@@ -59,9 +50,4 @@ func makeAPI(ginRouter *gin.Engine) {
 // WebSocket
 func startWebSocket(ginRouter *gin.Engine) {
 	ginRouter.GET("/ws", controller.WebSocketConnect)
-}
-
-//MiddleWare 中间件
-func MiddleWare(c *gin.Context) {
-	fmt.Println("\n MiddleWare start !")
 }

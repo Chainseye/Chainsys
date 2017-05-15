@@ -1,9 +1,8 @@
-;
-(function($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
     // 定义构造函数
     var ChainsWebSocket = function(ele, opt) {
-        this.$ele = ele;
+    
         this.options = {
             "wsType": "ws",
             "wsUrl": "127.0.0.1",
@@ -19,15 +18,16 @@
             },
             "inputContainer": "#wsInput",
             "buttonContainer": "#wsButton",
-            "trigger": "click",
+            "trigger": "click"
         };
         this.options = $.extend({}, this.options, opt)
-    };
+    }
 
     // 定义方法
     ChainsWebSocket.prototype = {
         init: function() {
             var that = this;
+            console.log("log: ");
             var wsLink = that.optinos.wsType + "://" + that.options.wsUrl + ":" + that.options.wsPort;
             var wsItem = new WebSocket(wsLink);
             $(that.options.buttonContainer).on(that.options.trigger, function() {
