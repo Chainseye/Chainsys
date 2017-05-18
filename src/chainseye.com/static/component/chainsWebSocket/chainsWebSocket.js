@@ -6,7 +6,7 @@
         this.options = {
             "wsType": "ws",
             "wsUrl": "127.0.0.1",
-            "wsPort": "9999",
+            "wsPort": "8099",
             "openFunc": function() {
                 console.log("WebSocket Loading...");
             },
@@ -27,8 +27,7 @@
     ChainsWebSocket.prototype = {
         init: function() {
             var that = this;
-            console.log("log: ");
-            var wsLink = that.optinos.wsType + "://" + that.options.wsUrl + ":" + that.options.wsPort;
+            var wsLink = that.options.wsType + "://" + that.options.wsUrl + ":" + that.options.wsPort;
             var wsItem = new WebSocket(wsLink);
             $(that.options.buttonContainer).on(that.options.trigger, function() {
                 wsItem.send($(that.options.inputContainer).value);
