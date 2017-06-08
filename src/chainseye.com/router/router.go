@@ -9,7 +9,7 @@ import (
 )
 
 //SetRouter gin框架设置路由
-func SetRouter() {
+func SetRouter(port string) {
 	ginRouter := gin.Default()
 
 	ginRouter.Static("/static", "./src/chainseye.com/static/")
@@ -18,9 +18,17 @@ func SetRouter() {
 
 	displayPage(ginRouter)
 	makeAPI(ginRouter)
+
+	ginRouter.Run(port)
+}
+
+//SetWebSocket 设置websocket
+func SetWebSocket(port string) {
+	ginRouter := gin.Default()
+
 	startWebSocket(ginRouter)
 
-	ginRouter.Run(":8099")
+	ginRouter.Run(port)
 }
 
 // Page

@@ -20,7 +20,9 @@ func WebSocketMiddleWare(context *gin.Context) {
 
 //WebSocketConnect 链接WebSocket
 func WebSocketConnect(context *gin.Context) {
-	conn, err := wsUpgrader.Upgrade(context.Writer, context.Request, nil)
+	w := context.Writer
+	r := context.Request
+	conn, err := wsUpgrader.Upgrade(w, r, nil)
 	if err != nil {
 		fmt.Printf("Failed to set websocket upgrade : %+v", err)
 		return
