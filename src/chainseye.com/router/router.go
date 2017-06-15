@@ -18,15 +18,9 @@ func SetRouter(port string) {
 
 	displayPage(ginRouter)
 	makeAPI(ginRouter)
-
-	ginRouter.Run(port)
-}
-
-//SetWebSocket 设置websocket
-func SetWebSocket(port string) {
-	ginRouter := gin.Default()
-
 	startWebSocket(ginRouter)
+	controller.RunWebSocketBroadcast()
+	startWsBroadcast(ginRouter)
 
 	ginRouter.Run(port)
 }
@@ -58,4 +52,8 @@ func makeAPI(ginRouter *gin.Engine) {
 // WebSocket
 func startWebSocket(ginRouter *gin.Engine) {
 	ginRouter.GET("/ws", controller.WebSocketConnect)
+}
+
+func startWsBroadcast(ginRouter *gin.Engine) {
+	ginRouter.GET("/wsBroadcast", controller.WebSocketBroadcast)
 }

@@ -5,22 +5,41 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1">
         <title>Index</title>
+
+        <link rel="stylesheet" type="text/css" href="/static/skin/css/global.css" />
+        <link rel="stylesheet" type="text/css" href="/static/skin/css/style.css" />
     </head>
     <body>
         <h1>This is index page !</h1>
         <p>Gin.H     => .info : {{ .info }}</p>
         <p>/api/info => data  : <span id="text-target"></span></p>
-        <input id="content" type="text" />
-        <button id="send">Send</button>
-        <pre id="pre"></pre>
+        <div id="singleWebSocket">
+            <input id="content" type="text" />
+            <button id="send">Send</button>
+            <pre id="pre"></pre>
+        </div>        
+        <div id="chatRoom">
+            <input id="chat" type="text" />
+            <button id="button">Chat</button>
+            <pre id="room"></pre>
+        </div>
         <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="/static/component/chainsWebSocket/chainsWebSocket.js"></script>
         <script>
             $(document).ready(function() {
-                $("body").ChainsWebSocket({
-                    "wsPort": "8079",
+                $("#singleWebSocket").ChainsWebSocket({
+                    "wsPort": "8099",
+                    "wsUrl": "localhost",
                     "inputContainer": "#content",
                     "buttonContainer": "#send"
+                });
+                $("#chatRoom").ChainsWebSocket({
+                    "wsPort": "8099",
+                    "wsUrl": "localhost",
+                    "service": "wsBroadcast",
+                    "inputContainer": "#chat",
+                    "buttonContainer": "#button",
+                    "targetContainer": "#room"
                 });
                 $.getJSON("/api/info", function(data) {
                     $("#text-target").html(data.info);

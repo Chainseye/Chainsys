@@ -11,6 +11,26 @@
         <p>Message: <input id="message" type="text" value="Hello, world!"></p>
     </form>
     <button onclick="send();">Send Message</button>
-    <script type="text/javascript"></script>
+    <pre id="output"></pre>
+    <script type="text/javascript">
+            url = 'ws://localhost:8099/ws';
+            c = new WebSocket(url);
+            
+            send = function(data){
+                $("#output").append((new Date())+ " ==> "+data+"\n")
+                c.send(data)
+            }
+
+            c.onmessage = function(msg){
+                $("#output").append((new Date())+ " <== "+msg.data+"\n")
+                console.log(msg)
+            }
+
+            c.onopen = function(){
+                setInterval( 
+                function(){ send("ping") }
+                , 1000 )
+            }
+    </script>
 </body>
 </html>
