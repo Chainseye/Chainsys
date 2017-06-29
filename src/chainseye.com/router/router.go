@@ -10,6 +10,7 @@ import (
 
 //SetRouter gin框架设置路由
 func SetRouter(port string) {
+	gin.SetMode("debug")
 	ginRouter := gin.Default()
 
 	ginRouter.Static("/static", "./src/chainseye.com/static/")
@@ -42,10 +43,9 @@ func displayPage(ginRouter *gin.Engine) {
 
 // API
 func makeAPI(ginRouter *gin.Engine) {
-	ginAPI := ginRouter.Group("/api", controller.APIMiddleWare)
+	ginAPI := ginRouter.Group("/api")
 	{
-		ginAPI.GET("info", controller.GetBaseInfo)
-		ginAPI.POST("checkPwd", controller.CheckPwd)
+		ginAPI.GET("info", controller.GetUserInfoByUID)
 	}
 }
 
