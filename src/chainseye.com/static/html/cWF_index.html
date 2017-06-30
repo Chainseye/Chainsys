@@ -12,7 +12,7 @@
     <body>
         <h1>This is index page !</h1>
         <p>Gin.H     => .info : {{ .info }}</p>
-        <p>/api/info => data  : <span id="text-target"></span></p>
+        <p>/api/user/info => data  : <span id="text-target"></span></p>
         <div id="singleWebSocket">
             <input id="content" type="text" />
             <button id="send">Send</button>
@@ -28,22 +28,21 @@
         <script>
             $(document).ready(function() {
                 $("#singleWebSocket").ChainsWebSocket({
-                    "wsPort": "8099",
+                    "wsPort": "8009",
                     "wsUrl": "localhost",
                     "inputContainer": "#content",
                     "buttonContainer": "#send"
                 });
                 $("#chatRoom").ChainsWebSocket({
-                    "wsPort": "8099",
+                    "wsPort": "8009",
                     "wsUrl": "localhost",
                     "service": "wsBroadcast",
                     "inputContainer": "#chat",
                     "buttonContainer": "#button",
                     "targetContainer": "#room"
                 });
-                $.getJSON("/api/info", function(data) {
-                    console.log(data);
-                    $("#text-target").html(data.info);
+                $.getJSON("/api/user/info", function(data) {
+                    $("#text-target").html("<br/>   mobile ==> " + data.info.mobile + "<br/>   password ==>" + data.info.password);
                 });
             });
         </script>

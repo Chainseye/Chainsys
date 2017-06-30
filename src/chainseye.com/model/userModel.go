@@ -1,12 +1,8 @@
 package model
 
-import (
-	"fmt"
-)
-
 //User 用户信息结构
 type User struct {
-	UID      uint64 `gorm:"type:int(11);primary_key;AUTO_INCREMENT" json:"uid"`
+	UID      uint64 `gorm:"column:uid;type:int(11);primary_key;AUTO_INCREMENT" json:"uid"`
 	Mobile   string `gorm:"column:mobile;type:varchar(45);not null;DEFAULT:''" json:"mobile"`
 	Password string `gorm:"column:password;type:varchar(45);not null;DEFAULT:''" json:"password"`
 }
@@ -30,8 +26,7 @@ func NewUserModel(name string) *UserModel {
 //GetUser 获取个人信息
 func (m *UserModel) GetUser(user *User) (*User, error) {
 	u := &User{}
-	fmt.Println(user.UID)
-	db := m.DB.Table("user").Where(user).First(u)
+	db := m.DB.Where(user).First(u)
 	if db.RecordNotFound() {
 		return nil, nil
 	}

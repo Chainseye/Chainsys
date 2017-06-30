@@ -15,6 +15,6 @@ const (
 func SetDB(dbType string) {
 	switch dbType {
 	case "mysql":
-		model.RegisterDefaultDB(DBAdmin + ":" + DBPassword + "@/" + DBConnectDB + "?charset=utf8&interpolateParams=true")
+		model.RegisterDefaultDB(DBAdmin + ":" + DBPassword + "@/" + DBConnectDB + "?charset=utf8")
 	}
 }

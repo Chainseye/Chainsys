@@ -1,7 +1,10 @@
 package model
 
 import (
+	"fmt"
+
 	"github.com/gorm"
+	_ "github.com/gorm/dialects/mysql"
 )
 
 const DEFAULT_MODEL = "default"
@@ -19,6 +22,7 @@ type DBConnection struct {
 }
 
 func RegisterDefaultDB(connStr string) error {
+	fmt.Println(connStr)
 	return RegisterDB(DEFAULT_MODEL, connStr)
 }
 

@@ -43,7 +43,7 @@ func displayPage(ginRouter *gin.Engine) {
 
 // API
 func makeAPI(ginRouter *gin.Engine) {
-	ginAPI := ginRouter.Group("/api")
+	ginAPI := ginRouter.Group("/api/user")
 	{
 		ginAPI.GET("info", controller.GetUserInfoByUID)
 	}
