@@ -20,3 +20,7 @@ The system of Chainseye!
 2017.6.16
   -->Base gin & gorilla websocket chatroom/singleLink
   -->Update websocket js
+
+2017.6.30
+  -->Base gin & gorm mysql search
+  -->change dir / mvc
