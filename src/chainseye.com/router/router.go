@@ -3,9 +3,10 @@ package router
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
-
+	conf "chainseye.com/conf"
 	"chainseye.com/controller"
+
+	"github.com/gin-gonic/gin"
 )
 
 //SetRouter gin框架设置路由
@@ -30,7 +31,8 @@ func SetRouter(port string) {
 func displayPage(ginRouter *gin.Engine) {
 	ginRouter.GET("/", func(context *gin.Context) {
 		context.HTML(http.StatusOK, "cWF_index.html", gin.H{
-			"info": "The index page !",
+			"info":   "The index page !",
+			"config": conf.INFO,
 		})
 	})
 
