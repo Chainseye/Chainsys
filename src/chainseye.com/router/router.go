@@ -30,9 +30,15 @@ func SetRouter(port string) {
 // Page
 func displayPage(ginRouter *gin.Engine) {
 	ginRouter.GET("/", func(context *gin.Context) {
+		style := context.Request.FormValue("style")
+		cssFileExists, _ := controller.PathExists("src/chainseye.com/static/skin/css/" + style + ".css")
+		if !cssFileExists == true {
+			style = "style"
+		}
 		context.HTML(http.StatusOK, "cWF_index.html", gin.H{
 			"info":   "The index page !",
 			"config": conf.INFO,
+			"style":  style,
 		})
 	})
 

@@ -1,3 +1,6 @@
 #singleWebSocket, #chatRoom {
     float: left;
 }
+p {
+    color: #333;
+}
