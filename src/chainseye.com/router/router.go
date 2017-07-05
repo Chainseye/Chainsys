@@ -3,7 +3,6 @@ package router
 import (
 	"net/http"
 
-	conf "chainseye.com/conf"
 	"chainseye.com/controller"
 
 	"github.com/gin-gonic/gin"
@@ -36,9 +35,8 @@ func displayPage(ginRouter *gin.Engine) {
 			style = "style"
 		}
 		context.HTML(http.StatusOK, "cWF_index.html", gin.H{
-			"info":   "The index page !",
-			"config": conf.INFO,
-			"style":  style,
+			"info":  "The index page !",
+			"style": style,
 		})
 	})
 

@@ -26,4 +26,5 @@ The system of Chainseye!
   -->change dir / mvc
 
 2017.7.5
+  -->Base beego config read .conf file
   -->Reset service to complete MVC

@@ -1,4 +1,4 @@
-package config
+package conf
 
 import (
 	"errors"
@@ -6,10 +6,12 @@ import (
 	"github.com/beego/config"
 )
 
+//Config 导出Config
 var Config config.Configer
 
-func Config_Init(path ...string) error {
-	configFile := "ini/app.conf"
+//ConfigInit 读取conf文件
+func ConfigInit(path ...string) error {
+	configFile := "src/chainseye.com/config/config.conf"
 	if len(path) > 0 && path[0] != "" {
 		configFile = path[0]
 	}
