@@ -3,7 +3,7 @@ package controller
 import (
 	"net/http"
 
-	"chainseye.com/model"
+	"chainseye.com/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,8 +11,7 @@ import (
 //GetUserInfoByUID 根据UID获取基本信息
 func GetUserInfoByUID(context *gin.Context) {
 
-	um := model.NewUserModel(model.DEFAULT_MODEL)
-	ur, err := um.GetUserInfoByUID(1)
+	ur, err := service.GetUserInfoByUID(1)
 	if err != nil {
 		context.JSON(http.StatusOK, gin.H{
 			"retCode": 1001,
