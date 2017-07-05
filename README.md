@@ -24,3 +24,6 @@ The system of Chainseye!
 2017.6.30
   -->Base gin & gorm mysql search
   -->change dir / mvc
+
+2017.7.5
+  -->Reset service to complete MVC
