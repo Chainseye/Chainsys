@@ -62,6 +62,18 @@
             directionalLight.position.set( 0, 0, -10000 );                             
             scene.add(directionalLight);
 
+            //test空壳
+            var ball = new THREE.SphereGeometry(35, 40, 400);
+            var ballMaterial = new THREE.MeshPhongMaterial({
+                transparent: true,
+                color: 0xffffff,
+                opacity: 0.2
+            });
+            var cubeBall = new THREE.Mesh(ball, ballMaterial);
+            cubeBall.position.set(-100, 0, 0); 
+            cubeBall.rotation.x = 0.2;
+            scene.add(cubeBall);
+            
             //地球
             var earthGeo = new THREE.SphereGeometry (30, 40, 400);
             //                   Phong(冯氏)材质类型 
