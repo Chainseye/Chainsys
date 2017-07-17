@@ -31,3 +31,6 @@ The system of Chainseye!
 
 2017.7.7
   -->Base Three.js add simple 3D earth
+
+2017.7.17
+  -->Base gin add BasicAuth

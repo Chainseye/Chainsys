@@ -31,14 +31,16 @@
         <script type="text/javascript" src="/static/component/chainsBall/chainsBall.js"></script>
         <script>
             $(document).ready(function() {
+                var port = 8009;
+
                 $("#singleWebSocket").ChainsWebSocket({
-                    "wsPort": "8009",
+                    "wsPort": port,
                     "wsUrl": "localhost",
                     "inputContainer": "#content",
                     "buttonContainer": "#send"
                 });
                 $("#chatRoom").ChainsWebSocket({
-                    "wsPort": "8009",
+                    "wsPort": port,
                     "wsUrl": "localhost",
                     "service": "wsBroadcast",
                     "inputContainer": "#chat",
