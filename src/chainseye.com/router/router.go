@@ -8,11 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var admins = gin.H{
-	"liph":  gin.H{"name": "李培晖", "nickName": "LPH"},
-	"admin": gin.H{"name": "admin", "nickName": "admin"},
-}
-
 //SetRouter gin框架设置路由
 func SetRouter(port string) {
 	gin.SetMode("debug")
@@ -60,14 +55,6 @@ func makeAPI(ginRouter *gin.Engine) {
 	}))
 	{
 		ginAPI.GET("info", controller.GetUserInfoByUID)
-		ginAPI.GET("/auth", func(context *gin.Context) {
-			name := context.MustGet(gin.AuthUserKey).(string)
-			if nickName, ok := admins[name]; ok {
-				context.JSON(http.StatusOK, gin.H{"name": name, "nickName": nickName})
-			} else {
-				context.JSON(http.StatusOK, gin.H{"name": name, "nickName": "NO NickName :("})
-			}
-		})
 	}
 }
 
