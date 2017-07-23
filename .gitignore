@@ -25,7 +25,3 @@ _testmain.go
 app.conf
 log
 build
-
-src/github.com/go-sql-driver/mysql/
-src/github.com/golang/protobuf/
-src/gopkg.in/go-playground/validator.v8/
