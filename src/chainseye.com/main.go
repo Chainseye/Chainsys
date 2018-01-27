@@ -9,7 +9,7 @@ import (
 )
 
 func init() {
-	err := conf.ConfigInit("src/chainseye.com/config/config.conf")
+	err := conf.ConfigInit("config/config.conf")
 	if err != nil {
 		fmt.Printf("init config failed, err is %v\n", err)
 	}

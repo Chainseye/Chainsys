@@ -1,3 +1,4 @@
 .idea/
 build
 /src/chainseye.com/.vscode
+/pkg
