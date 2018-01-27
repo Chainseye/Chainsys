@@ -6,7 +6,7 @@ export GOPATH = $(shell pwd)
 all:
 	@mkdir -p $(dir $@)
 	cd ./src/chainseye.com; go build -o ../../build/bin/${APPS} ${CONTENT_SRCS}
-	cp -r ./src/chainseye.com/conf ./build
+	cp -r ./src/chainseye.com/config ./build
 	cp -r ./src/chainseye.com/static ./build
 
 clean:
