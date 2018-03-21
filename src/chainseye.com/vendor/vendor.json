@@ -1,0 +1,121 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "zgHK1vxUJDZTXAPCw+Bls7St0Ks=",
+			"path": "github.com/astaxie/beego/config",
+			"revision": "f16688817aa428d10361394015b40d096b680542",
+			"revisionTime": "2017-12-18T11:18:59Z"
+		},
+		{
+			"checksumSHA1": "QeKwBtN2df+j+4stw3bQJ6yO4EY=",
+			"path": "github.com/gin-contrib/sse",
+			"revision": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae",
+			"revisionTime": "2017-01-09T09:34:21Z"
+		},
+		{
+			"checksumSHA1": "jtYBhg0T8UBhGBBJ0PkRmPfLL7w=",
+			"path": "github.com/gin-gonic/gin",
+			"revision": "2fbb97117cda046278ad34bd7bac35cbc38c68d5",
+			"revisionTime": "2018-01-24T03:06:42Z"
+		},
+		{
+			"checksumSHA1": "3Ttl4CxOEl+NCstutCFyECv0CWs=",
+			"path": "github.com/gin-gonic/gin/binding",
+			"revision": "2fbb97117cda046278ad34bd7bac35cbc38c68d5",
+			"revisionTime": "2018-01-24T03:06:42Z"
+		},
+		{
+			"checksumSHA1": "woO1qIxIeQ1bcbPSiMfAKk3r4xg=",
+			"path": "github.com/gin-gonic/gin/json",
+			"revision": "2fbb97117cda046278ad34bd7bac35cbc38c68d5",
+			"revisionTime": "2018-01-24T03:06:42Z"
+		},
+		{
+			"checksumSHA1": "O+2Q4Uc9Vidvc/ctORliL315ZVI=",
+			"path": "github.com/gin-gonic/gin/render",
+			"revision": "2fbb97117cda046278ad34bd7bac35cbc38c68d5",
+			"revisionTime": "2018-01-24T03:06:42Z"
+		},
+		{
+			"checksumSHA1": "ZbU8qGzETzJZ2t30LmHxla5PLMY=",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "bc14601d1bd56421dd60f561e6052c9ed77f9daf",
+			"revisionTime": "2018-01-25T05:47:45Z"
+		},
+		{
+			"checksumSHA1": "yqF125xVSkmfLpIVGrLlfE05IUk=",
+			"path": "github.com/golang/protobuf/proto",
+			"revision": "c65a0412e71e8b9b3bfd22925720d23c0f054237",
+			"revisionTime": "2018-01-22T22:16:10Z"
+		},
+		{
+			"checksumSHA1": "ntZn3grwv2LCzq90glREg/SGaIo=",
+			"path": "github.com/gorilla/websocket",
+			"revision": "292fd08b2560ad524ee37396253d71570339a821",
+			"revisionTime": "2018-01-10T14:15:25Z"
+		},
+		{
+			"checksumSHA1": "VIp1lZm6joWhlNdwhady8u//qRw=",
+			"path": "github.com/jinzhu/inflection",
+			"revision": "1c35d901db3da928c72a72d8458480cc9ade058f",
+			"revisionTime": "2017-01-02T12:52:26Z"
+		},
+		{
+			"checksumSHA1": "+L0F3hRLkfquy2htbIC8EGTCPTc=",
+			"path": "github.com/json-iterator/go",
+			"revision": "e31252f2e2eb8716d9b64e7627a92887f84d4ed5",
+			"revisionTime": "2018-01-23T15:31:07Z"
+		},
+		{
+			"checksumSHA1": "7FOlyj4mzi71ozArTGq7qrn+PXE=",
+			"path": "github.com/lerryxiao/gorm",
+			"revision": "5409931a1bb87e484d68d649af9367c207713ea2",
+			"revisionTime": "2017-02-22T00:28:20Z"
+		},
+		{
+			"checksumSHA1": "gmbnn9G3YGhe35NOWNe4npNTxeg=",
+			"path": "github.com/lerryxiao/gorm/dialects/mysql",
+			"revision": "5409931a1bb87e484d68d649af9367c207713ea2",
+			"revisionTime": "2017-02-22T00:28:20Z"
+		},
+		{
+			"checksumSHA1": "w5RcOnfv5YDr3j2bd1YydkPiZx4=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c",
+			"revisionTime": "2017-11-07T05:05:31Z"
+		},
+		{
+			"checksumSHA1": "xgL6TWhgkL/ULE2olP+ZA6gbOno=",
+			"path": "github.com/ugorji/go/codec",
+			"revision": "9831f2c3ac1068a78f50999a30db84270f647af6",
+			"revisionTime": "2018-01-12T14:19:27Z"
+		},
+		{
+			"checksumSHA1": "ouf0E2dZkl8Kszzn3jS82r87eaE=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "af9a21289d0040306ecc55fa668c95246f1f8425",
+			"revisionTime": "2018-01-24T16:33:53Z"
+		},
+		{
+			"checksumSHA1": "LiyXfqOzaeQ8vgYZH3t2hUEdVTw=",
+			"path": "google.golang.org/appengine/cloudsql",
+			"revision": "5bee14b453b4c71be47ec1781b0fa61c2ea182db",
+			"revisionTime": "2017-12-12T22:30:47Z"
+		},
+		{
+			"checksumSHA1": "P/k5ZGf0lEBgpKgkwy++F7K1PSg=",
+			"path": "gopkg.in/go-playground/validator.v8",
+			"revision": "5f1438d3fca68893a817e4a66806cea46a9e4ebf",
+			"revisionTime": "2017-07-30T05:02:35Z"
+		},
+		{
+			"checksumSHA1": "qOmvuDm+F+2nQQecUZBVkZrTn6Y=",
+			"path": "gopkg.in/yaml.v2",
+			"revision": "d670f9405373e636a5a2765eea47fac0c9bc91a4",
+			"revisionTime": "2018-01-09T11:43:31Z"
+		}
+	],
+	"rootPath": "chainseye.com"
+}

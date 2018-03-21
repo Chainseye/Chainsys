@@ -3,7 +3,7 @@ package conf
 import (
 	"errors"
 
-	"github.com/beego/config"
+	"github.com/astaxie/beego/config"
 )
 
 //Config 导出Config

@@ -3,8 +3,8 @@ package model
 import (
 	"fmt"
 
-	"github.com/gorm"
-	_ "github.com/gorm/dialects/mysql"
+	"github.com/lerryxiao/gorm"
+	_ "github.com/lerryxiao/gorm/dialects/mysql"
 )
 
 const DEFAULT_MODEL = "default"

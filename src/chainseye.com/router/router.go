@@ -13,9 +13,9 @@ func SetRouter(port string) {
 	gin.SetMode("debug")
 	ginRouter := gin.Default()
 
-	ginRouter.Static("/static", "./src/chainseye.com/static/")
-	ginRouter.StaticFile("/favicon.ico", "./favicon.ico")
-	ginRouter.LoadHTMLGlob("src/chainseye.com/static/html/*")
+	ginRouter.Static("/static", "static/")
+	ginRouter.StaticFile("/favicon.ico", "static/favicon.ico")
+	ginRouter.LoadHTMLGlob("static/html/*")
 
 	displayPage(ginRouter)
 	makeAPI(ginRouter)
@@ -30,7 +30,7 @@ func SetRouter(port string) {
 func displayPage(ginRouter *gin.Engine) {
 	ginRouter.GET("/", func(context *gin.Context) {
 		style := context.Request.FormValue("style")
-		cssFileExists, _ := controller.PathExists("src/chainseye.com/static/skin/css/" + style + ".css")
+		cssFileExists, _ := controller.PathExists("static/skin/css/" + style + ".css")
 		if !cssFileExists == true {
 			style = "style"
 		}
