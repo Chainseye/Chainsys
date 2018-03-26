@@ -31,24 +31,25 @@
         <script type="text/javascript" src="/static/component/chainsBall/chainsBall.js"></script>
         <script>
             $(document).ready(function() {
-                var port = 8009;
+                var port = 80;
+                var server = "47.52.206.121";
 
                 $("#singleWebSocket").ChainsWebSocket({
                     "wsPort": port,
-                    "wsUrl": "localhost",
+                    "wsUrl": server,
                     "inputContainer": "#content",
                     "buttonContainer": "#send"
                 });
                 $("#chatRoom").ChainsWebSocket({
                     "wsPort": port,
-                    "wsUrl": "localhost",
+                    "wsUrl": server,
                     "service": "wsBroadcast",
                     "inputContainer": "#chat",
                     "buttonContainer": "#button",
                     "targetContainer": "#room"
                 });
                 $.getJSON("/api/user/info", function(data) {
-                    $("#text-target").html("<br/>   mobile ==> " + data.info.mobile + "<br/>   password ==>" + data.info.password);
+                    $("#text-target").html("API successful !");
                 });
                 $("#container").chainsBall({
                     "container": "container"

@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"chainseye.com/conf"
-	"chainseye.com/controller"
 	"chainseye.com/router"
 )
 
@@ -17,8 +16,6 @@ func init() {
 }
 
 func main() {
-	// 设置数据库
-	controller.SetDB(conf.DBTYPE)
 	// 设置路由
 	router.SetRouter(conf.ROUTERPORT)
 }
