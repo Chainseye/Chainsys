@@ -9,17 +9,14 @@
         <link rel="stylesheet" type="text/css" href="/static/skin/css/global.css" />
         <link rel="stylesheet" type="text/css" href="/static/skin/css/{{ .style }}.css" />
         <link rel="stylesheet" type="text/css" href="/static/component/chainsBall/chainsBall.css" />
+        <link rel="stylesheet" type="text/css" href="/static/component/chainsWebSocket/chainsWebSocket.css" />
     </head>
     <body>
+        <div class="header"></div>
         <h1>This is index page !</h1>
         <p>Gin.H     => .info : {{ .info }}</p>
-        <p>/api/user/info => data  : <span id="text-target"></span></p>
-        <div id="container"></div>
-        <div id="singleWebSocket">
-            <input id="content" type="text" />
-            <button id="send">Send</button>
-            <pre id="pre"></pre>
-        </div>        
+        <p>/api/user/token => data  : <span id="text-target"></span></p>
+        <div id="container"></div>      
         <div id="chatRoom">
             <input id="chat" type="text" />
             <button id="button">Chat</button>
@@ -32,24 +29,26 @@
         <script>
             $(document).ready(function() {
                 var port = 80;
-                var server = "47.52.206.121";
+                var server = "localhost";
 
-                $("#singleWebSocket").ChainsWebSocket({
-                    "wsPort": port,
-                    "wsUrl": server,
-                    "inputContainer": "#content",
-                    "buttonContainer": "#send"
-                });
-                $("#chatRoom").ChainsWebSocket({
-                    "wsPort": port,
-                    "wsUrl": server,
-                    "service": "wsBroadcast",
-                    "inputContainer": "#chat",
-                    "buttonContainer": "#button",
-                    "targetContainer": "#room"
-                });
                 $.getJSON("/api/user/info", function(data) {
-                    $("#text-target").html("API successful !");
+                    switch (data.retCode) {
+                        case 0:
+                            $("#text-target").html("API successful !");
+                            $("#chatRoom").ChainsWebSocket({
+                                "wsPort": port,
+                                "wsUrl": server,
+                                "service": "wsBroadcast",
+                                "inputContainer": "#chat",
+                                "buttonContainer": "#button",
+                                "targetContainer": "#room",
+                                "token": data.token || "000000"
+                            });
+                            break;
+                        default:
+                            $("#text-target").html("API Failed !");
+                    }
+
                 });
                 $("#container").chainsBall({
                     "container": "container"

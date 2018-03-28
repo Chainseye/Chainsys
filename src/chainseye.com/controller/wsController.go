@@ -41,10 +41,10 @@ func (h *hub) run() {
 		case m := <-h.broadcast:
 			for c := range h.connections {
 				select {
-				case c.send <- m:
-				default:
-					delete(h.connections, c)
-					close(c.send)
+					case c.send <- m:
+					default:
+						delete(h.connections, c)
+						close(c.send)
 				}
 			}
 		}

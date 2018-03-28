@@ -1,0 +1,19 @@
+.wMessage {
+    width: 300px;
+    display: block;
+    position: relative;
+}
+
+.wMessage::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.wMessage.wLeft>div {
+    float: left;
+}
+
+.wMessage.wRight>div {
+    float: right;
+}

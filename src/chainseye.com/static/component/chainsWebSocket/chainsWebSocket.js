@@ -1,16 +1,17 @@
-;(function($, window, document, undefined) {
+;
+(function($, window, document, undefined) {
 
     // 定义构造函数
     var ChainsWebSocket = function(ele, opt) {
-    
+
         this.options = {
             "wsType": "ws",
             "wsUrl": "127.0.0.1",
             "wsPort": "8099",
             "service": "ws",
+            "token": "000000",
             "openFunc": function() {
                 console.log("WebSocket Loading...");
-                
             },
             "closeFunc": function(e) {
                 console.log("WebSocket: " + e.code + " Connection closed")
@@ -23,6 +24,7 @@
             "targetContainer": "#pre",
             "trigger": "click"
         };
+        this.wsItem = null;
         this.options = $.extend({}, this.options, opt)
     }
 
@@ -31,17 +33,39 @@
         init: function() {
             var that = this;
             var wsLink = that.options.wsType + "://" + that.options.wsUrl + ":" + that.options.wsPort + "/" + that.options.service;
-            var wsItem = new WebSocket(wsLink);
- 
-            wsItem.onmessage = function(msg) {
-                $(that.options.targetContainer).append("<== " + msg.data + "\n");
+            that.wsItem = new WebSocket(wsLink);
+
+            that.wsItem.onmessage = function(msg) {
+                that.displayMessage(msg.data);
             }
-            wsItem.onopen = function() {
-                $(that.options.buttonContainer).on(that.options.trigger, function() {
-                    wsItem.send($(that.options.inputContainer).val());
-                    $(that.options.targetContainer).append("==> " + $(that.options.inputContainer).val() + "\n");
-                });
+            that.wsItem.onopen = function(evt) {
+                that.bindSendEvent();
             }
+        },
+        bindSendEvent: function() {
+            var that = this;
+            $(that.options.inputContainer).on("keyup", function(e) {
+                if (e.keyCode == 13) {
+                    that.sendMessage(e.target.value);
+                }
+            })
+            $(that.options.buttonContainer).on(that.options.trigger, function(e) {
+                that.sendMessage($(that.options.inputContainer).val());
+            });
+        },
+        sendMessage: function(value) {
+            var that = this;
+            if (typeof value !== "undefined" && value != "") {
+                that.wsItem.send(that.options.token + value);
+                $(that.options.inputContainer).val("").focus();
+            }
+        },
+        displayMessage: function(value) {
+            var that = this;
+            var token = value.slice(0, 6);
+            var message = value.slice(6);
+            var wClass = (that.options.token == token) ? "wMessage wRight" : "wMessage wLeft";
+            $(that.options.targetContainer).append("<div class='" + wClass + "'><div>" + token + "</div><div style='color: #" + token + ";'>" + message + "</div></div>\n");
         }
     };
 
