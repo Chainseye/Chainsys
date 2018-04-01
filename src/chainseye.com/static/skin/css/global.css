@@ -1,11 +1,118 @@
-* {
+*,
+*:after,
+*:before {
     margin: 0;
     padding: 0;
     list-style-type: none;
     outline: none;
     text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 p {
     line-height: 2;
     color: #000;
+}
+
+.cube-wrap {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    -ms-perspective: 1000px;
+    perspective: 1000px;
+    box-sizing: content-box;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cube {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    transform-style: preserve-3d;
+    transform: rotateX(-50deg) rotateY(-50deg) rotateZ(0deg);
+    animation: cube 8s infinite linear;
+    margin: 10px auto;
+}
+
+.cube>div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    box-shadow: 0 0 10px #ccc;
+    transition: transform 0.3s ease-in;
+}
+
+.cube-wrap:hover>.cube>div {
+    animation: hover-cube 8s infinite linear;
+}
+
+.cube div.front-pane {
+    -webkit-transform: translateZ(10px);
+    -moz-transform: translateZ(10px);
+    -ms-transform: translateZ(10px);
+    transform: translateZ(10px);
+}
+
+.cube div.back-pane {
+    -webkit-transform: translateZ(-10px) rotateY(180deg);
+    -moz-transform: translateZ(-10px) rotateY(180deg);
+    -ms-transform: translateZ(-10px) rotateY(180deg);
+    transform: translateZ(-10px) rotateY(180deg);
+}
+
+.cube div.top-pane {
+    -webkit-transform: rotateX(90deg) translateZ(-10px);
+    -moz-transform: rotateX(90deg) translateZ(-10px);
+    -ms-transform: rotateX(90deg) translateZ(-10px);
+    transform: rotateX(90deg) translateZ(10px);
+}
+
+.cube div.bottom-pane {
+    -webkit-transform: rotateX(-90deg) translateZ(10px);
+    -moz-transform: rotateX(-90deg) translateZ(10px);
+    -ms-transform: rotateX(-90deg) translateZ(10px);
+    transform: rotateX(-90deg) translateZ(10px);
+}
+
+.cube div.left-pane {
+    -webkit-transform: rotateY(-90deg) translateZ(10px);
+    -moz-transform: rotateY(-90deg) translateZ(10px);
+    -ms-transform: rotateY(-90deg) translateZ(10px);
+    transform: rotateY(-90deg) translateZ(10px);
+}
+
+.cube div.right-pane {
+    -webkit-transform: rotateY(C) translateZ(10px);
+    -moz-transform: rotateY(90deg) translateZ(10px);
+    -ms-transform: rotateY(90deg) translateZ(10px);
+    transform: rotateY(90deg) translateZ(10px);
+}
+
+@keyframes cube {
+    0% {
+        transform: rotateX(0) rotateY(0) rotateZ(0);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+
+@keyframes hover-cube {
+    0% {
+        margin: 0;
+    }
+    50% {
+        margin: 20px;
+    }
+    100% {
+        margin: 0;
+    }
 }

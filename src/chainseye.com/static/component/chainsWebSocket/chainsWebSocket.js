@@ -65,7 +65,10 @@
             var token = value.slice(0, 6);
             var message = value.slice(6);
             var wClass = (that.options.token == token) ? "wMessage wRight" : "wMessage wLeft";
-            $(that.options.targetContainer).append("<div class='" + wClass + "'><div>" + token + "</div><div style='color: #" + token + ";'>" + message + "</div></div>\n");
+            $(that.options.targetContainer).append("<div class='" + wClass + "'>" + that.addCube(token) + "<div style='color: #" + token + ";'>" + message + "</div></div>\n");
+        },
+        addCube: function(color) {
+            return '<div class="cube-wrap" title="' + color + '" style="border-color: #' + color + ';box-shadow:0 0 10px #' + color + '"><div class="cube"><div class="front-pane" style="box-shadow:0 0 10px #' + color + ';"></div><div class="back-pane" style="box-shadow:0 0 10px #' + color + ';"></div><div class="left-pane" style="box-shadow:0 0 10px #' + color + ';"></div><div class="right-pane" style="box-shadow:0 0 10px #' + color + ';"></div><div class="top-pane" style="box-shadow:0 0 10px #' + color + ';"></div><div class="bottom-pane" style="box-shadow:0 0 10px #' + color + ';"></div></div></div>'
         }
     };
 
