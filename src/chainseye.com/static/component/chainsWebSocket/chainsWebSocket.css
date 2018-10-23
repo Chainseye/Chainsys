@@ -17,3 +17,16 @@
 .wMessage.wRight>div {
     float: right;
 }
+
+.wMessage>div.info {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 6px 10px -6px;
+    font-size: 12px;
+    padding: 10px;
+    white-space: normal;
+    max-width: calc(100% - 68px);
+    line-height: 16px;
+    text-align: left;
+    letter-spacing: 1px;
+}
